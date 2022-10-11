@@ -13,11 +13,13 @@ app.post("/students", async (req: Request, res: Response) => {
   const { students } = req.body;
   await prisma.student.createMany({
     data: students,
-    skipDuplicates: true
+    skipDuplicates: true,
   });
 
   res.sendStatus(201); // created
 });
+
+console.log("Olá, eu sou uma alteração na matrix");
 
 app.get("/students/random", async (req: Request, res: Response) => {
   const students = await prisma.student.findMany();
