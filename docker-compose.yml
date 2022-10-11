@@ -1,0 +1,26 @@
+version: "3"
+services:
+  db:
+    image: postgres:13
+    container_name: db
+    restart: always
+    ports:
+      - 2345:5432
+    env_file:
+      - .env
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  sorteio:
+    container_name: node_app
+    build: .
+    command: bash -c "npm run build && npm start"
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    env_file:
+      - .env
+      
+volumes:
+  postgres:
