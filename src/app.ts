@@ -9,11 +9,13 @@ app.get("/students", async (req: Request, res: Response) => {
   res.send(students);
 });
 
+console.log("oi eu sou uma nova feat maravilhosa");
+
 app.post("/students", async (req: Request, res: Response) => {
   const { students } = req.body;
   await prisma.student.createMany({
     data: students,
-    skipDuplicates: true
+    skipDuplicates: true,
   });
 
   res.sendStatus(201); // created
