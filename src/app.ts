@@ -10,6 +10,7 @@ app.get("/students", async (req: Request, res: Response) => {
 });
 
 console.log("oi eu sou uma nova feat maravilhosa");
+console.log("oi, eu sou mais uma nova feature");
 
 app.post("/students", async (req: Request, res: Response) => {
   const { students } = req.body;
